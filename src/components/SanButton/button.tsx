@@ -10,6 +10,8 @@ export enum ButtonType {
   Primary = 'primary',
   Default = 'default',
   Danger = 'danger',
+  Warning = 'warning',
+  Confirm = 'confirm',
   Link = 'link'
 }
 
@@ -22,16 +24,23 @@ interface BaseButtonProps {
   href?: string;
 }
 
-const SanButton: React.FC<BaseButtonProps> = (props) => {
+type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
+
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
+
+const SanButton: React.FC<ButtonProps> = (props) => {
   const {
     btnType,
+    className,
     disabled,
     size,
     children,
-    href
+    href,
+    ...restProps
   } = props
 
-  const classes = classNames('btn', {
+  const classes = classNames('btn', className, {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     'disabled': (btnType === ButtonType.Link) && disabled
@@ -42,6 +51,7 @@ const SanButton: React.FC<BaseButtonProps> = (props) => {
       <a
         className={classes}
         href={href}
+        {...restProps}
       >
         {children}
       </a>
@@ -51,6 +61,7 @@ const SanButton: React.FC<BaseButtonProps> = (props) => {
       <button
         className={classes}
         disabled={disabled}
+        {...restProps}
       >
         {children}
       </button>

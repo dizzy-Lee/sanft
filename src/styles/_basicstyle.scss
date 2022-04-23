@@ -10,19 +10,19 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
-$blue:    #0d6efd !default;
+$blue:    #66ccff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
-$pink:    #d63384 !default;
-$red:     #dc3545 !default;
-$orange:  #fd7e14 !default;
-$yellow:  #fadb14 !default;
-$green:   #52c41a !default;
-$teal:    #20c997 !default;
+$pink:    #FAAFBE !default;
+$red:     #EE0000 !default;
+$orange:  #FFA500 !default;
+$yellow:  #FFE212 !default;
+$green:   #99FFFF !default;
+$teal:    #39c5bb !default;
 $cyan:    #17a2b8 !default;
 
 $primary:       $blue !default;
-$secondary:     $gray-600 !default;
+$secondary:     $teal !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
@@ -166,9 +166,9 @@ $enable-pointer-cursor-for-buttons:           true !default;
 $border-width:                1px !default;
 $border-color:                $gray-300 !default;
 
-$border-radius:               .25rem !default;
-$border-radius-lg:            .3rem !default;
-$border-radius-sm:            .2rem !default;
+$border-radius:               .5rem !default;
+$border-radius-lg:            .75rem !default;
+$border-radius-sm:            .25rem !default;
 
 // 不同类型的 box shadow
 $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
@@ -198,7 +198,9 @@ $btn-font-size-lg:            $font-size-lg !default;
 $btn-border-width:            $border-width !default;
 
 // 按钮其他
-$btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
+// $btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
+$btn-box-shadow:              .5rem .5rem 1rem $gray-300, .5rem .5rem 1rem $white !default;
+$btn-box-shadow-inset:        inset .5rem .5rem 1rem $gray-300, .5rem .5rem 1rem $white !default;
 $btn-disabled-opacity:        .65 !default;
 
 // 链接按钮

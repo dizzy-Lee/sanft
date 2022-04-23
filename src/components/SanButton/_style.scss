@@ -1,13 +1,16 @@
 .btn {
+  position: relative;
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  color: $primary;
+  background: $white;
   border: none;
-  color: #090909;
-  padding: 0.7em 1.7em;
-  font-size: 18px;
-  border-radius: 0.5em;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
-  transition: all 0.3s;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: $btn-box-shadow;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  transition: $btn-transition;
   cursor: pointer;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $border-radius);
   &.disabled,
@@ -20,10 +23,58 @@
   }
 }
 
-.btn:hover {
-  background: linear-gradient(145deg, #d1d1d1, #f8f8f8);
-}
 .btn:active {
-  color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+  color: lighten($primary, 10%);
+  box-shadow: $btn-box-shadow-inset;
+}
+
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $border-radius-lg);
+}
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $border-radius-sm);
+}
+
+.btn-primary {
+  @include button-style($primary);
+}
+
+.btn-danger {
+  @include button-style($danger);
+}
+.btn-danger:active {
+  color: lighten($danger, 10%);
+  box-shadow: $btn-box-shadow-inset;
+}
+.btn-warning {
+  @include button-style($warning)
+}
+.btn-warning:active {
+  color: lighten($warning, 10%);
+  box-shadow: $btn-box-shadow-inset;
+}
+.btn-confirm {
+  @include button-style($secondary)
+}
+.btn-confirm:active {
+  color: lighten($secondary, 10%);
+  box-shadow: $btn-box-shadow-inset;
+}
+.btn-link {
+  font-weight: $font-weight-normal;
+  color: $btn-link-color;
+  text-decoration: $link-decoration;
+  &:hover {
+    color: $btn-link-color;
+    text-decoration: $link-hover-decoration;
+  }
+  &:focus,
+  &.focus {
+    text-decoration: $link-hover-decoration;
+  }
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+    pointer-events: none;
+  }
 }
