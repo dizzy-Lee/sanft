@@ -4,19 +4,16 @@ import SanButton, {
   ButtonType,
   ButtonSize,
 } from "./components/SanButton/button";
-
-import { SanMessage } from "./components/SanMessage/message";
+import message from "./components/SanMessage/message";
 
 function App() {
-  SanMessage({messageTitle: "lyf"})
-
   return (
     <div className="App">
       <SanButton
         size={ButtonSize.Small}
-        onClick={(e) => {
+        onClick={e => {
           e.preventDefault();
-          alert("hello");
+          message.info("hello");
         }}
       >
         Hello world
@@ -32,13 +29,27 @@ function App() {
       >
         link
       </SanButton>
-      <SanButton size={ButtonSize.Large} btnType={ButtonType.Danger}>
+      <SanButton
+        size={ButtonSize.Large}
+        btnType={ButtonType.Danger}
+        onClick={() => {
+          message.error("danger");
+        }}
+      >
         large-danger
       </SanButton>
-      <SanButton size={ButtonSize.Large} btnType={ButtonType.Warning}>
+      <SanButton
+        size={ButtonSize.Large}
+        btnType={ButtonType.Warning}
+        onClick={() => {
+          message.warning("warning");
+        }}
+      >
         large-warning
       </SanButton>
-      <SanButton size={ButtonSize.Large} btnType={ButtonType.Confirm}>large-confirm</SanButton>
+      <SanButton size={ButtonSize.Large} btnType={ButtonType.Confirm} onClick={() => {message.success('success')}}>
+        large-success
+      </SanButton>
     </div>
   );
 }

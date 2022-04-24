@@ -1,71 +1,122 @@
-import React from "react"
-import { createRoot } from "react-dom/client"
-import MessageCard, { MessageType } from "./messageCard"
+import React, { useEffect, useState } from "react";
+import { createRoot } from "react-dom/client";
+import { TransitionGroup } from "react-transition-group";
+import Transition from "../Transition/transition";
+import MessageCard, { MessageType } from "./messageCard";
 
+export interface Notice {
+  text: string;
+  key: string;
+  type: MessageType;
+}
 export interface MessageApi {
-  info: (text: string) => void
-  success: (text: string) => void
-  warning: (text: string) => void
-  error: (text: string) => void
+  info: (text: string) => void;
+  success: (text: string) => void;
+  warning: (text: string) => void;
+  error: (text: string) => void;
 }
 
 export interface Notice {
-  text: string
-  key: string
-  type: MessageType
+  text: string;
+  key: string;
+  type: MessageType;
 }
 
-export const SanMessage: React.FC = () => {
+let seed = 0;
+const now = Date.now();
+const getUuid = (): string => {
+  const id = seed;
+  seed += 1;
+  return `MESSAGE_${now}_${id}`;
+};
+
+let add: (notice: Notice) => void;
+
+const SanMessage: React.FC = () => {
+  const [notices, setNotices] = useState<Notice[]>([]);
+  const timeout = 3 * 1000;
+  const maxCount = 10;
+
+  const remove = (notice: Notice) => {
+    const { key } = notice;
+
+    setNotices(prevNotices =>
+      prevNotices.filter(({ key: itemKey }) => key !== itemKey)
+    );
+  };
+
+  add = (notice: Notice) => {
+    setNotices(prevNotices => [...prevNotices, notice]);
+
+    setTimeout(() => {
+      remove(notice);
+    }, timeout);
+  };
+
+  useEffect(() => {
+    if (notices.length > maxCount) {
+      const [firstNotice] = notices;
+      remove(firstNotice);
+    }
+  }, [notices]);
+
   return (
-    <div>
-      <MessageCard
-        messageDetail="this is a info"
-        messageTitle="title"
-        messageType="info"
-      />
+    <div className="message-container">
+      <TransitionGroup>
+        {notices.map(({ text, key, type }) => (
+          <Transition 
+            timeout={200} 
+            in 
+            animation="slide-in-top" 
+            key={key}
+          >
+            <MessageCard messageType={type} messageDetail={text} />
+          </Transition>
+        ))}
+      </TransitionGroup>
     </div>
-  )
-}
+  );
+};
 
-let el = document.querySelector("#message-wrapper")
+let el = document.querySelector("#message-wrapper");
 if (!el) {
-  el = document.createElement("div")
-  el.className = "message-wrapper"
-  el.id = "message-wrapper"
-  document.body.append(el)
+  el = document.createElement("div");
+  el.className = "message-wrapper";
+  el.id = "message-wrapper";
+  document.body.append(el);
 }
-const root = createRoot(el)
-root.render(<SanMessage />)
+const root = createRoot(el);
+root.render(<SanMessage />);
 
-// const api: MessageApi = {
-//   info: (text) => {
-//     add({
-//       text,
-//       key: getUuid(),
-//       type: 'info'
-//     })
-//   },
-//   success: (text) => {
-//     add({
-//       text,
-//       key: getUuid(),
-//       type: 'success'
-//     })
-//   },
-//   warning: (text) => {
-//     add({
-//       text,
-//       key: getUuid(),
-//       type: 'warning'
-//     })
-//   },
-//   error: (text) => {
-//     add({
-//       text,
-//       key: getUuid(),
-//       type: 'danger'
-//     })
-//   }
-// }
+const message: MessageApi = {
+  info: text => {
+    add({
+      text,
+      key: getUuid(),
+      type: "info",
+    });
+  },
+  success: text => {
+    add({
+      text,
+      key: getUuid(),
+      type: "success",
+    });
+  },
+  warning: text => {
+    add({
+      text,
+      key: getUuid(),
+      type: "warning",
+    });
+  },
+  error: text => {
+    add({
+      text,
+      key: getUuid(),
+      type: "danger",
+    });
+  },
+};
 
-// export default api
+export default message;

@@ -1,19 +1,25 @@
-export type MessageType = 'info' | 'success' | 'danger' | 'warning'
+import React,{ FC } from "react";
+import classNames from "classnames";
+export type MessageType = "info" | "success" | "danger" | "warning";
 
 interface MessageProps {
-  messageType?: MessageType
-  messageTitle?: string
-  messageDetail?: string
+  messageType?: MessageType;
+  messageDetail?: string;
 }
 
-const MessageCard: React.FC <MessageProps> = (props) => {
-  const { messageType, messageTitle, messageDetail } = props
+const MessageCard: FC<MessageProps> = (props: MessageProps) => {
+
+  const { messageType, messageDetail } = props;
+  
+  const classes = classNames('message', {
+    [`message-${messageType}`]: messageType
+  })
+
   return (
-    <div>
-      <h3>{messageTitle}</h3>
-      <p>{messageDetail}</p>
+    <div className={classes}>
+      {messageDetail}
     </div>
-  )
-}
+  );
+};
 
-export default MessageCard
+export default MessageCard;

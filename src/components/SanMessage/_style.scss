@@ -1,0 +1,28 @@
+.message-container {
+  position: fixed;
+  top: 0rem;
+  right: 0rem;
+  .message {
+    font-weight: $btn-font-weight;
+    line-height: $btn-line-height;
+    color: $white;
+    background: $primary;
+    border: none;
+    border-radius: $border-radius;
+    margin-top: 2rem;
+    margin-right: 2rem;
+    box-shadow: $message-box-shadow;
+    text-align: center;
+    vertical-align: middle;
+    padding: $btn-padding-y-lg $btn-padding-x-lg;
+  }
+  .message-danger {
+    background: $danger;
+  }
+  .message-warning {
+    background: $warning;
+  }
+  .message-success {
+    background: $success;
+  }
+}
