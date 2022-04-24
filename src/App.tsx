@@ -4,7 +4,12 @@ import SanButton, {
   ButtonType,
   ButtonSize,
 } from "./components/SanButton/button";
+
+import { SanMessage } from "./components/SanMessage/message";
+
 function App() {
+  SanMessage({messageTitle: "lyf"})
+
   return (
     <div className="App">
       <SanButton
@@ -27,7 +32,7 @@ function App() {
       >
         link
       </SanButton>
-      <SanButton size={ButtonSize.Large} btnType={ButtonType.Danger} disabled>
+      <SanButton size={ButtonSize.Large} btnType={ButtonType.Danger}>
         large-danger
       </SanButton>
       <SanButton size={ButtonSize.Large} btnType={ButtonType.Warning}>
