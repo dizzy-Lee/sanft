@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { TransitionGroup } from "react-transition-group";
-import Transition from "../Transition/transition";
 import MessageCard, { MessageType } from "./messageCard";
 
 export interface Notice {
@@ -62,18 +60,9 @@ const SanMessage: React.FC = () => {
 
   return (
     <div className="message-container">
-      <TransitionGroup>
-        {notices.map(({ text, key, type }) => (
-          <Transition 
-            timeout={200} 
-            in 
-            animation="slide-in-top" 
-            key={key}
-          >
-            <MessageCard messageType={type} messageDetail={text} />
-          </Transition>
-        ))}
-      </TransitionGroup>
+      {notices.map(({ text, key, type }) => (
+        <MessageCard messageType={type} messageDetail={text} key={key} />
+      ))}
     </div>
   );
 };

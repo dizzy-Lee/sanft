@@ -3,6 +3,9 @@
   top: 0rem;
   right: 0rem;
   .message {
+    position: absolute;
+    // top: 0;
+    right: 2rem;
     font-weight: $btn-font-weight;
     line-height: $btn-line-height;
     color: $white;
@@ -15,6 +18,7 @@
     text-align: center;
     vertical-align: middle;
     padding: $btn-padding-y-lg $btn-padding-x-lg;
+    transition: all .5s;
   }
   .message-danger {
     background: $danger;

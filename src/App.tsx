@@ -6,7 +6,10 @@ import SanButton, {
 } from "./components/SanButton/button";
 import message from "./components/SanMessage/message";
 
+
 function App() {
+  let count = 0;
+
   return (
     <div className="App">
       <SanButton
@@ -47,7 +50,14 @@ function App() {
       >
         large-warning
       </SanButton>
-      <SanButton size={ButtonSize.Large} btnType={ButtonType.Confirm} onClick={() => {message.success('success')}}>
+      <SanButton
+        size={ButtonSize.Large}
+        btnType={ButtonType.Confirm}
+        onClick={() => {
+          count++
+          message.success(count.toString());
+        }}
+      >
         large-success
       </SanButton>
     </div>
