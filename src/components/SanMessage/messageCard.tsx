@@ -29,7 +29,7 @@ const MessageCard: FC<MessageProps> = (props: MessageProps) => {
         clearTimeout(timer);
       };
     }
-  }, []);
+  },[classes]);
 
   return <div className={classes}>{messageDetail}</div>;
 };
