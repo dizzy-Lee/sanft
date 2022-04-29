@@ -55,7 +55,7 @@ function App() {
         btnType={ButtonType.Confirm}
         onClick={() => {
           count++
-          message.success(count.toString());
+          message.success(`success${count}`);
         }}
       >
         large-success
