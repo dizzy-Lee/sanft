@@ -5,13 +5,20 @@ import SanButton, {
   ButtonSize,
 } from "./components/SanButton/button";
 import message from "./components/SanMessage/message";
-
+import SanMenu from "./components/SanMenu/menu";
+import SanMenuItem from "./components/SanMenu/menuItem";
 
 function App() {
   let count = 0;
 
   return (
     <div className="App">
+      <SanMenu>
+        <SanMenuItem>menu one</SanMenuItem>
+        <SanMenuItem>menu two</SanMenuItem>
+        <SanMenuItem>menu three</SanMenuItem>
+      </SanMenu>
+
       <SanButton
         size={ButtonSize.Small}
         onClick={e => {
