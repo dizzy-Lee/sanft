@@ -14,7 +14,7 @@ $blue:    #66ccff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #FAAFBE !default;
-$red:     #EE0000 !default;
+$red:     #de335e !default;
 $orange:  #FFA500 !default;
 $yellow:  #FFE212 !default;
 $green:   #99FFFF !default;
@@ -224,7 +224,8 @@ $message-box-shadow: .5rem .5rem 1rem $gray-400, .5rem .5rem 1rem $gray-400 !def
 // menu
 $menu-border-width:            $border-width !default;
 $menu-border-color:            $border-color !default;
-$menu-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
+// $menu-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
+$menu-box-shadow:              .5rem .5rem 1rem $gray-300, .5rem .5rem 1rem $white !default;
 $menu-transition:              color .15s ease-in-out, border-color .15s ease-in-out !default;
 
 // menu-item

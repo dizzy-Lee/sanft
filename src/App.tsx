@@ -13,8 +13,8 @@ function App() {
 
   return (
     <div className="App">
-      <SanMenu defaultIndex={1} mode="vertical" onSelect={(index) => {console.log(index)}}>
-        <SanMenuItem disabled>menu one</SanMenuItem>
+      <SanMenu defaultIndex={1} onSelect={(index) => {console.log(index)}}>
+        <SanMenuItem>menu one</SanMenuItem>
         <SanMenuItem>menu two</SanMenuItem>
         <SanMenuItem>menu three</SanMenuItem>
       </SanMenu>
