@@ -1,29 +1,41 @@
-import React from "react";
+import React from "react"
 
 import SanButton, {
   ButtonType,
   ButtonSize,
-} from "./components/SanButton/button";
-import message from "./components/SanMessage/message";
-import SanMenu from "./components/SanMenu/menu";
-import SanMenuItem from "./components/SanMenu/menuItem";
+} from "./components/SanButton/button"
+import message from "./components/SanMessage/message"
+import SanMenu from "./components/SanMenu/menu"
+import SanMenuItem from "./components/SanMenu/menuItem"
+import SanSubMenu from "./components/SanMenu/subMenu"
 
 function App() {
-  let count = 0;
+  let count = 0
 
   return (
     <div className="App">
-      <SanMenu defaultIndex={1} onSelect={(index) => {console.log(index)}}>
+      <SanMenu
+        defaultIndex='0'
+        onSelect={index => {
+          console.log(index)
+        }}
+        mode="horizontal"
+      >
         <SanMenuItem>menu one</SanMenuItem>
         <SanMenuItem>menu two</SanMenuItem>
+        <SanSubMenu title="this is a sub menu">
+          <SanMenuItem>this is first item</SanMenuItem>
+          <SanMenuItem>this is two item</SanMenuItem>
+          <SanMenuItem>this is third item</SanMenuItem>
+        </SanSubMenu>
         <SanMenuItem>menu three</SanMenuItem>
       </SanMenu>
 
       <SanButton
         size={ButtonSize.Small}
         onClick={e => {
-          e.preventDefault();
-          message.info("hello");
+          e.preventDefault()
+          message.info("hello")
         }}
       >
         Hello world
@@ -43,7 +55,7 @@ function App() {
         size={ButtonSize.Large}
         btnType={ButtonType.Danger}
         onClick={() => {
-          message.error("danger");
+          message.error("danger")
         }}
       >
         large-danger
@@ -52,7 +64,7 @@ function App() {
         size={ButtonSize.Large}
         btnType={ButtonType.Warning}
         onClick={() => {
-          message.warning("warning");
+          message.warning("warning")
         }}
       >
         large-warning
@@ -62,13 +74,13 @@ function App() {
         btnType={ButtonType.Confirm}
         onClick={() => {
           count++
-          message.success(`success${count}`);
+          message.success(`success${count}`)
         }}
       >
         large-success
       </SanButton>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
