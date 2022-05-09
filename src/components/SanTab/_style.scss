@@ -1,0 +1,15 @@
+.san-tab-container {
+  text-align: center;
+}
+
+.san-tabs {
+  display: inline-block;
+  border: .0625rem solid black;
+  box-shadow: $btn-box-shadow;
+  border-radius: $border-radius;
+  .san-tab-content {
+    display: inline-block;
+    margin: $tab-margin;
+    cursor: pointer;
+  }
+}

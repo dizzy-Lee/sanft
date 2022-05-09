@@ -8,6 +8,8 @@ import message from "./components/SanMessage/message"
 import SanMenu from "./components/SanMenu/menu"
 import SanMenuItem from "./components/SanMenu/menuItem"
 import SanSubMenu from "./components/SanMenu/subMenu"
+import SanTabs from "./components/SanTab/tabs"
+import SanTabContent from "./components/SanTab/tabContent"
 
 function App() {
   let count = 0
@@ -30,6 +32,12 @@ function App() {
         </SanSubMenu>
         <SanMenuItem>menu three</SanMenuItem>
       </SanMenu>
+
+      <SanTabs>
+        <SanTabContent title="one">content one</SanTabContent>
+        <SanTabContent title="two">content two</SanTabContent>
+        <SanTabContent title="three">content three</SanTabContent>
+      </SanTabs>
 
       <SanButton
         size={ButtonSize.Small}
