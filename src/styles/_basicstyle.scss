@@ -56,7 +56,7 @@ $font-size-root:              null !default;
 $font-weight-lighter:         lighter !default;
 $font-weight-light:           300 !default;
 $font-weight-normal:          400 !default;
-$font-weight-bold:            700 !default;
+$font-weight-bold:            500 !default;
 $font-weight-bolder:          bolder !default;
 $font-weight-base:            $font-weight-normal !default;
 
@@ -241,6 +241,8 @@ $submenu-box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
 
 // tabs
 $tab-margin: .25rem .5rem !default;
+$tab-box-shadow:              .0625rem .0625rem .01rem $gray-300, .0625rem .0625rem .01rem $white !default;
+// $tab-box-shadow:              .5rem .5rem 1rem $gray-300, .5rem .5rem 1rem $white !default;
 
 //input
 $input-padding-y:                       $btn-padding-y !default;

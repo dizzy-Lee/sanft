@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <SanMenu
-        defaultIndex='0'
+        defaultIndex="0"
         onSelect={index => {
           console.log(index)
         }}
@@ -33,8 +33,19 @@ function App() {
         <SanMenuItem>menu three</SanMenuItem>
       </SanMenu>
 
-      <SanTabs>
-        <SanTabContent title="one">content one</SanTabContent>
+      <SanTabs defaultIndex="0">
+        <SanTabContent title="one">
+          <div>content one</div>
+          <SanButton
+            size={ButtonSize.Small}
+            onClick={e => {
+              e.preventDefault()
+              message.info("hello")
+            }}
+          >
+            Hello world
+          </SanButton>
+        </SanTabContent>
         <SanTabContent title="two">content two</SanTabContent>
         <SanTabContent title="three">content three</SanTabContent>
       </SanTabs>

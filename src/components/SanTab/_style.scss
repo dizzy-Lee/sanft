@@ -4,12 +4,18 @@
 
 .san-tabs {
   display: inline-block;
-  border: .0625rem solid black;
-  box-shadow: $btn-box-shadow;
+  padding: .125rem;
   border-radius: $border-radius;
+  background: $gray-200;
   .san-tab-content {
     display: inline-block;
-    margin: $tab-margin;
+    padding: $tab-margin;
+    border-radius: $border-radius;
     cursor: pointer;
+  }
+  .active-tab-content {
+    background: $white;
+    box-shadow: $tab-box-shadow;
+    font-weight: $font-weight-bold;
   }
 }

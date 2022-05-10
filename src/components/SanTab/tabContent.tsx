@@ -1,35 +1,45 @@
-import React, { FC, useContext, useEffect } from "react";
-import classNames from "classnames";
-import { createPortal } from "react-dom";
-import { TabContext } from "./tabs";
+import React, { FC, useContext } from "react"
+import classNames from "classnames"
+import { createPortal } from "react-dom"
+import { TabContext } from "./tabs"
 
-interface TabContent {
-  title: string;
-  index?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
+export interface TabContentProps {
+  title: string
+  index?: string
+  className?: string
+  style?: React.CSSProperties
+  children?: React.ReactNode
 }
 
-let sanTabContentDetail = document.getElementById(
-  "san-tab-content-detail"
-) as Element;
-
-
-const SanTabContent: FC<TabContent> = props => {
-  const { title, index, className, style, children } = props;
-  const classes = classNames("san-tab-content", className);
-  const context = useContext(TabContext);
+const SanTabContent: FC<TabContentProps> = props => {
+  const { title, index, className, style, children } = props
+  const context = useContext(TabContext)
+  const classes = classNames("san-tab-content", className, {
+    'active-tab-content': context.selectedIndex === index
+  })
   const tabsPortal = () => {
-    return createPortal(children, context.tabContentRef!);
-    // return null
-  };
+    if (context.tabContentEle && context.selectedIndex === index) {
+      return createPortal(children, context.tabContentEle)
+    } else {
+      return null
+    }
+  }
+  const handleSelect = () => {
+    if (context.onSelect && typeof index === 'string') {
+      context.onSelect(index)
+    }
+  }
   return (
-    <div className={classes} style={style}>
+    <div
+      className={classes}
+      style={style}
+      onClick={handleSelect}
+    >
       {title}
       {tabsPortal()}
     </div>
-  );
-};
+  )
+}
 
-export default SanTabContent;
+SanTabContent.displayName = "SanTabContent"
+export default SanTabContent

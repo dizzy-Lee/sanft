@@ -1,5 +1,6 @@
-import classNames from "classnames";
-import React, { createContext, FC, Ref, useCallback, useEffect, useRef, useState } from "react";
+import classNames from "classnames"
+import React, { createContext, FC, useEffect, useState } from "react"
+import { TabContentProps } from "./tabContent"
 export interface TabsProps {
   defaultIndex?: string
   className?: string
@@ -7,35 +8,53 @@ export interface TabsProps {
   children?: React.ReactNode
 }
 
+type TabContentDetail = HTMLElement | undefined | null
 interface ITabContext {
-  index?: string
-  onSelect?: Function
-  tabContentRef?: HTMLElement
+  selectedIndex?: string
+  onSelect?: (index:string) => void
+  tabContentEle?: TabContentDetail
 }
 
-export const TabContext = createContext<ITabContext>({})
-const SanTabs: FC<TabsProps> = (props) => {
-  const {
-    defaultIndex,
-    className,
-    style,
-    children
-  } = props
-  // const sanTabContentDetail = useRef(null)
-  const [sanTabContentDetail, setTabContentDetail] = useState(document.body)
+export const TabContext = createContext<ITabContext>({
+  selectedIndex: "0",
+})
+const SanTabs: FC<TabsProps> = props => {
+  const { defaultIndex, className, style, children } = props
+  const [sanTabContentDetail, setTabContentDetail] =
+    useState<TabContentDetail>(null)
+  const [selectedIndex, setSelectedIndex] = useState(defaultIndex)
   useEffect(() => {
-    setTabContentDetail(document.getElementById('san-tab-content-detail')!)
+    setTabContentDetail(document.getElementById("san-tab-content-detail"))
   }, [])
   const classes = classNames("san-tabs", className)
-  const passedContext: ITabContext = {
-    index: '0',
-    tabContentRef: sanTabContentDetail
+  const handleSelect = (index: string) => {
+    setSelectedIndex(index)
   }
+  const passedContext: ITabContext = {
+    selectedIndex,
+    tabContentEle: sanTabContentDetail,
+    onSelect: handleSelect,
+  }
+
+  const renderChildren = () => {
+    return React.Children.map(children, (child, index) => {
+      const childElement =
+        child as React.FunctionComponentElement<TabContentProps>
+      if (childElement.type.displayName === "SanTabContent") {
+        return React.cloneElement(childElement, {
+          index: index.toString(),
+        })
+      } else {
+        console.error("警告: SanTabs的子元素必须为SanTabContent")
+      }
+    })
+  }
+
   return (
     <div className="san-tab-container">
       <title className={classes} style={style}>
         <TabContext.Provider value={passedContext}>
-        {children}
+          {renderChildren()}
         </TabContext.Provider>
       </title>
       <div id="san-tab-content-detail"></div>
@@ -43,4 +62,7 @@ const SanTabs: FC<TabsProps> = (props) => {
   )
 }
 
+SanTabs.defaultProps = {
+  defaultIndex: "0",
+}
 export default SanTabs
