@@ -1,12 +1,13 @@
-# Sanft: 一个基于React和TypeScript的UI组件库
+<h1 align="center">Sanft</h1>
+#### 一个基于React和TypeScript的UI组件库
+
+___
 
 * 引入
 
   ```react
-  import {SanButton} from 'Sanft'
+  import { SanButton } from 'Sanft'
   ```
-
-  
 
 * 使用
 
@@ -21,8 +22,7 @@
       Hello world
   </SanButton>
   ```
-  
-  
+
 
 ***
 
