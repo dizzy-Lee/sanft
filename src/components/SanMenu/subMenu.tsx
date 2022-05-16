@@ -6,6 +6,8 @@ import React, {
   useState,
 } from "react"
 import classNames from "classnames"
+import { CSSTransition } from "react-transition-group"
+
 import { MenuContext } from "./menu"
 import { MenuItemProps } from "./menuItem"
 
@@ -33,22 +35,36 @@ const SanSubMenu: FC<SubMenuProps> = props => {
   }
   const renderChildren = () => {
     const classes = classNames("san-submenu", {
-      "menu-opened": menuOpen
+      "menu-opened": menuOpen,
     })
     const childrenComponent = React.Children.map(children, (child, i) => {
       const childElement = child as FunctionComponentElement<MenuItemProps>
       if (childElement.type.displayName === "SanMenuItem") {
         return React.cloneElement(childElement, {
-          index: `${index}-${i}`
+          index: `${index}-${i}`,
         })
       } else {
         console.log("警告: SanSubMenu的子元素必须为SanMenuItem")
       }
     })
-    return <ul className={classes}>{childrenComponent}</ul>
+    return (
+      <CSSTransition
+        in={menuOpen}
+        timeout={300}
+        classNames="zoom-in-top"
+        appear
+      >
+        <ul className={classes}>{childrenComponent}</ul>
+      </CSSTransition>
+      )
   }
   return (
-    <li key={index} className={classes} onMouseEnter={handleOpen} onMouseLeave={handleClose}>
+    <li
+      key={index}
+      className={classes}
+      onMouseEnter={handleOpen}
+      onMouseLeave={handleClose}
+    >
       <div className="submenu-title">{title}</div>
       {renderChildren()}
     </li>
