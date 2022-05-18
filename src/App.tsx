@@ -1,9 +1,6 @@
 import React from "react"
 
-import SanButton, {
-  ButtonType,
-  ButtonSize,
-} from "./components/SanButton/button"
+import SanButton, { ButtonSize } from "./components/SanButton/button"
 import message from "./components/SanMessage/message"
 import SanMenu from "./components/SanMenu/menu"
 import SanMenuItem from "./components/SanMenu/menuItem"
@@ -37,7 +34,7 @@ function App() {
         <SanTabContent title="one">
           <div>content one</div>
           <SanButton
-            size={ButtonSize.Small}
+            size='sm'
             onClick={e => {
               e.preventDefault()
               message.info("hello")
@@ -51,7 +48,7 @@ function App() {
       </SanTabs>
 
       <SanButton
-        size={ButtonSize.Small}
+        size='sm'
         onClick={e => {
           e.preventDefault()
           message.info("hello")
@@ -59,20 +56,20 @@ function App() {
       >
         Hello world
       </SanButton>
-      <SanButton btnType={ButtonType.Primary} disabled>
+      <SanButton btnType="primary" disabled>
         large
       </SanButton>
       <SanButton
-        btnType={ButtonType.Link}
+        btnType="link"
         href="https://www.baidu.com"
-        size={ButtonSize.Large}
+        size='lg'
         disabled
       >
         link
       </SanButton>
       <SanButton
-        size={ButtonSize.Large}
-        btnType={ButtonType.Danger}
+        size='lg'
+        btnType="danger"
         onClick={() => {
           message.error("danger")
         }}
@@ -80,8 +77,8 @@ function App() {
         large-danger
       </SanButton>
       <SanButton
-        size={ButtonSize.Large}
-        btnType={ButtonType.Warning}
+        size='lg'
+        btnType="warning"
         onClick={() => {
           message.warning("warning")
         }}
@@ -89,8 +86,8 @@ function App() {
         large-warning
       </SanButton>
       <SanButton
-        size={ButtonSize.Large}
-        btnType={ButtonType.Confirm}
+        size='lg'
+        btnType="confirm"
         onClick={() => {
           count++
           message.success(`success${count}`)
