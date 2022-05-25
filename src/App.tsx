@@ -1,6 +1,6 @@
 import React from "react"
 
-import SanButton, { ButtonSize } from "./components/SanButton/button"
+import SanButton from "./components/SanButton/button"
 import message from "./components/SanMessage/message"
 import SanMenu from "./components/SanMenu/menu"
 import SanMenuItem from "./components/SanMenu/menuItem"

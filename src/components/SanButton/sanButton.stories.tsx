@@ -38,7 +38,7 @@
 
 // Button.stories.ts|tsx
 
-import React, { Children, Component } from "react"
+import React from "react"
 
 import { ComponentStory, ComponentMeta } from "@storybook/react"
 
@@ -53,12 +53,12 @@ const Template: ComponentStory<typeof SanButton> = args => (
   <SanButton {...args}>primary button</SanButton>
 )
 export const Primary = Template.bind({})
-Primary.args = { btnType: "primary" }
+Primary.args = { btnType: "warning" }
 
 // export const Primary: ComponentStory<typeof SanButton> = () => (
 //   <SanButton btnType="primary">primary button</SanButton>
 // )
-Primary.storyName = "this is primary style button"
+Primary.storyName = "Warning"
 
 export const Danger: ComponentStory<typeof SanButton> = () => (
   <SanButton btnType="danger">danger button</SanButton>
