@@ -1,5 +1,5 @@
 <h1 align="center">Sanft</h1>
-#### 一个基于React和TypeScript的UI组件库
+一个基于React和TypeScript的UI组件库
 
 ___
 
@@ -23,7 +23,10 @@ ___
   </SanButton>
   ```
 
-
+* 以storybook启动项目
+  ```javascript
+  npm run storybook
+  ```
 ***
 
 #####  正在施工中......
