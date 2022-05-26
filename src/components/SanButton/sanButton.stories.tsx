@@ -47,23 +47,36 @@ import SanButton from "./button"
 export default {
   title: "按钮",
   component: SanButton,
+  argTypes: {
+    btnType: {
+      options: ['primary', 'danger', 'warning', 'confirm', 'default', 'link'],
+      control: { type: 'select' },
+    },
+    size: {
+      options: ['lg', 'sm'],
+      control: {type: 'radio'}
+    },
+    disabled: {
+      control: {type: 'boolean'}
+    }
+  },
 } as ComponentMeta<typeof SanButton>
 
 const Template: ComponentStory<typeof SanButton> = args => (
-  <SanButton {...args}>primary button</SanButton>
+  <SanButton {...args}>button</SanButton>
 )
-export const Primary = Template.bind({})
-Primary.args = { btnType: "warning" }
+export const WarningButton = Template.bind({})
+WarningButton.args = { btnType: "warning", size: 'lg' }
+WarningButton.storyName = "Warning"
 
-// export const Primary: ComponentStory<typeof SanButton> = () => (
-//   <SanButton btnType="primary">primary button</SanButton>
-// )
-Primary.storyName = "Warning"
+export const DangerButton = Template.bind({})
+DangerButton.args = {btnType: "danger"}
+DangerButton.storyName = "Danger"
 
-export const Danger: ComponentStory<typeof SanButton> = () => (
-  <SanButton btnType="danger">danger button</SanButton>
-)
+export const DefaultButton = Template.bind({})
+DefaultButton.args = {btnType: "default"}
+DefaultButton.storyName = "Default"
 
-export const Default: ComponentStory<typeof SanButton> = () => (
-  <SanButton btnType="default">default button</SanButton>
-)
+export const ConfirmButton = Template.bind({})
+ConfirmButton.args = {btnType: "confirm"}
+ConfirmButton.storyName = "Confirm"
