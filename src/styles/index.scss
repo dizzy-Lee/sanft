@@ -1,5 +1,5 @@
 //基础样式
-@import "basicstyle";
+@import "basic";
 
 //浏览器统一样式
 @import "initialize";
@@ -20,4 +20,7 @@
 @import "../components/SanMenu/style";
 
 //tabs样式
-@import "../components/SanTab/style"
+@import "../components/SanTab/style";
+
+//input样式
+@import "../components//SanInput/style";

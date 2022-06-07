@@ -7,3 +7,11 @@
 @mixin button-style($color) {
   color: $color;
 }
+
+@mixin input-size($padding-y, $padding-x, $font-size, $height, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $height;
+  height: $height;
+  border-radius: $border-radius;
+}

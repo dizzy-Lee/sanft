@@ -15,10 +15,8 @@ export const Tabs: ComponentStory<typeof SanTabs> = () => (
   <SanTabs defaultIndex="0">
     <SanTabContent title="one">
       <div>content one</div>
-      <SanButton
-        size="sm"
-      >
-        Hello world
+      <SanButton>
+        button
       </SanButton>
     </SanTabContent>
     <SanTabContent title="two">content two</SanTabContent>

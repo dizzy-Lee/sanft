@@ -1,0 +1,52 @@
+.san-input {
+  .san-input-prefix {
+    display: inline-block;
+  }
+  input {
+    outline: none;
+    border: none;
+  }
+  display: inline-block;
+  box-sizing: content-box;
+  border: none;
+  outline-color: $primary;
+  box-shadow: $btn-box-shadow;
+  border-radius: $border-radius;
+  @include input-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    1rem,
+    1.5rem,
+    $border-radius
+  );
+}
+
+.san-input:hover {
+  box-shadow: $btn-box-shadow;
+  outline-color: $primary;
+  outline-style: auto;
+}
+
+.san-input:focus {
+  border: 1px solid red;
+}
+
+.ipt-lg {
+  @include input-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    1.25rem,
+    2rem,
+    $border-radius-lg
+  );
+}
+
+.ipt-sm {
+  @include input-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    0.875rem,
+    1rem,
+    $border-radius-sm
+  );
+}

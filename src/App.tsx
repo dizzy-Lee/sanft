@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import SanButton from "./components/SanButton/button"
 import message from "./components/SanMessage/message"
@@ -7,8 +7,10 @@ import SanMenuItem from "./components/SanMenu/menuItem"
 import SanSubMenu from "./components/SanMenu/subMenu"
 import SanTabs from "./components/SanTab/tabs"
 import SanTabContent from "./components/SanTab/tabContent"
+import SanInput from "./components/SanInput/input"
 
 function App() {
+  const [changeValue, setChangeValue] = useState("")
   let count = 0
 
   return (
@@ -34,7 +36,7 @@ function App() {
         <SanTabContent title="one">
           <div>content one</div>
           <SanButton
-            size='sm'
+            size="sm"
             onClick={e => {
               e.preventDefault()
               message.info("hello")
@@ -48,7 +50,7 @@ function App() {
       </SanTabs>
 
       <SanButton
-        size='sm'
+        size="sm"
         onClick={e => {
           e.preventDefault()
           message.info("hello")
@@ -59,16 +61,11 @@ function App() {
       <SanButton btnType="primary" disabled>
         large
       </SanButton>
-      <SanButton
-        btnType="link"
-        href="https://www.baidu.com"
-        size='lg'
-        disabled
-      >
+      <SanButton btnType="link" href="https://www.baidu.com" size="lg" disabled>
         link
       </SanButton>
       <SanButton
-        size='lg'
+        size="lg"
         btnType="danger"
         onClick={() => {
           message.error("danger")
@@ -77,7 +74,7 @@ function App() {
         large-danger
       </SanButton>
       <SanButton
-        size='lg'
+        size="lg"
         btnType="warning"
         onClick={() => {
           message.warning("warning")
@@ -86,7 +83,7 @@ function App() {
         large-warning
       </SanButton>
       <SanButton
-        size='lg'
+        size="lg"
         btnType="confirm"
         onClick={() => {
           count++
@@ -95,6 +92,16 @@ function App() {
       >
         large-success
       </SanButton>
+      <SanInput
+        placeholder="please input something"
+        prefix="this is a prefix"
+        postfix=".com"
+        size="lg"
+        value={changeValue}
+        onChange={e => {
+          setChangeValue(e.target.value)
+        }}
+      />
     </div>
   )
 }
